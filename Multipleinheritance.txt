@@ -1,0 +1,80 @@
+//Java program to implement multiple inheritance
+
+Source code:-
+
+public class MultipleInheritance {
+    public static void main(String[] args) {
+        CarWithMusicPlayer carWithMusicPlayer = new CarWithMusicPlayer();
+        carWithMusicPlayer.start();
+        carWithMusicPlayer.playMusic();
+        carWithMusicPlayer.stopMusic();
+        carWithMusicPlayer.stop();
+    }
+}
+
+interface Vehicle {
+    void start();
+    void stop();
+}
+interface MusicPlayer {
+    void playMusic();
+    void stopMusic();
+}
+class Car implements Vehicle {
+    @Override
+    public void start() {
+        System.out.println("Car started.");
+    }
+
+    @Override
+    public void stop() {
+        System.out.println("Car stopped.");
+    }
+}
+class MP3Player implements MusicPlayer {
+    @Override
+    public void playMusic() {
+        System.out.println("Playing music.");
+    }
+
+    @Override
+    public void stopMusic() {
+        System.out.println("Music stopped.");
+    }
+}
+class CarWithMusicPlayer implements Vehicle, MusicPlayer {
+    private Car car;
+    private MP3Player mp3Player;
+
+    public CarWithMusicPlayer() {
+        this.car = new Car();
+        this.mp3Player = new MP3Player();
+    }
+
+    @Override
+    public void start() {
+        car.start();
+    }
+
+    @Override
+    public void stop() {
+        car.stop();
+    }
+
+    @Override
+    public void playMusic() {
+        mp3Player.playMusic();
+    }
+
+    @Override
+    public void stopMusic() {
+        mp3Player.stopMusic();
+    }
+}
+
+Output:-
+
+Car started.
+Playing music.
+Music stopped.
+Car stopped.

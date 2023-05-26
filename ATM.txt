@@ -1,0 +1,103 @@
+//Java program representing ATM transaction
+
+Source code:
+
+import java.util.Scanner;
+
+public class ATM {
+
+    public static void main(String args[]) {
+        int balance, withdraw, deposit;
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the amount present in your bank account: ");
+        balance = sc.nextInt();
+        
+        while (true) {
+            System.out.println("Automated Teller Machine");
+            System.out.println("Choose 1 for Withdraw");
+            System.out.println("Choose 2 for Deposit");
+            System.out.println("Choose 3 for Check Balance");
+            System.out.println("Choose 4 for EXIT");
+            System.out.print("Choose the operation you want to perform: ");
+            int choice = sc.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter money to be withdrawn: ");
+                    withdraw = sc.nextInt();
+                    if (balance >= withdraw) {
+                        balance = balance - withdraw;
+                        System.out.println("Please collect your money");
+                    } else {
+                        System.out.println("Insufficient Balance");
+                    }
+                    System.out.println("Balance: " + balance);
+                    System.out.println("");
+                    break;
+
+                case 2:
+                    System.out.print("Enter money to be deposited: ");
+                    deposit = sc.nextInt();
+                    balance = balance + deposit;
+                    System.out.println("Your Money has been successfully deposited");
+                    System.out.println("Balance: " + balance);
+                    System.out.println("");
+                    break;
+
+                case 3:
+                    System.out.println("Balance: " + balance);
+                    System.out.println("");
+                    break;
+
+                case 4:
+                    System.exit(0);
+
+                default:
+                    System.out.println("Error. Select a valid option.");
+                    System.out.println("");
+                    break;
+            }
+        }
+    }
+}
+
+Output: 
+
+Enter the amount present in your bank account: 150000
+Automated Teller Machine
+Choose 1 for Withdraw
+Choose 2 for Deposit
+Choose 3 for Check Balance
+Choose 4 for EXIT
+Choose the operation you want to perform:  
+1
+Enter money to be withdrawn: 23500
+Please collect your money
+Balance: 126500
+Automated Teller Machine
+Choose 1 for Withdraw
+Choose 2 for Deposit
+Choose 3 for Check Balance
+Choose 4 for EXIT
+Choose the operation you want to perform:  
+2
+Enter money to be deposited: 1100
+Your Money has been successfully deposited
+Balance: 127600
+
+Automated Teller Machine
+Choose 1 for Withdraw
+Choose 2 for Deposit
+Choose 3 for Check Balance
+Choose 4 for EXIT
+Choose the operation you want to perform:  
+3
+Balance: 127600
+
+Automated Teller Machine
+Choose 1 for Withdraw
+Choose 2 for Deposit
+Choose 3 for Check Balance
+Choose 4 for EXIT
+Choose the operation you want to perform:  
+4

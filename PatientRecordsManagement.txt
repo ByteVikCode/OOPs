@@ -1,0 +1,145 @@
+//Java code for patient records management
+
+Source code:
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class PatientRecordsManagement {
+    public static void main(String[] args) {
+        List<Patient> patientRecords = new ArrayList<>();
+
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("1. Add a patient");
+            System.out.println("2. View patient records");
+            System.out.println("3. Exit");
+            System.out.print("Enter your choice: ");
+
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter patient name: ");
+                    String name = scanner.next();
+
+                    System.out.print("Enter patient age: ");
+                    int age = scanner.nextInt();
+
+                    System.out.print("Enter patient diagnosis: ");
+                    String diagnosis = scanner.next();
+
+                    System.out.print("Enter treating doctor's name: ");
+                    String doctor = scanner.next();
+
+                    List<String> prescribedMedicines = new ArrayList<>();
+                    System.out.println("Enter prescribed medicines (enter 'done' to finish): ");
+                    String medicine;
+                    while (!(medicine = scanner.next()).equalsIgnoreCase("done")) {
+                        prescribedMedicines.add(medicine);
+                    }
+
+                    Patient patient = new Patient(name, age, diagnosis, doctor, prescribedMedicines);
+                    patientRecords.add(patient);
+                    System.out.println("Patient record added successfully!");
+                    System.out.println();
+                    break;
+
+                case 2:
+                    if (patientRecords.isEmpty()) {
+                        System.out.println("No patient records found.");
+                        System.out.println();
+                        break;
+                    }
+
+                    System.out.println("Patient Records:");
+                    for (Patient p : patientRecords) {
+                        System.out.println("Name: " + p.getName());
+                        System.out.println("Age: " + p.getAge());
+                        System.out.println("Diagnosis: " + p.getDiagnosis());
+                        System.out.println("Doctor: " + p.getDoctor());
+                        System.out.println("Prescribed Medicines: " + p.getPrescribedMedicines());
+                        System.out.println();
+                    }
+                    break;
+
+                case 3:
+                    System.out.println("Exiting the program...");
+                    scanner.close();
+                    System.exit(0);
+
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+                    System.out.println();
+                    break;
+            }
+        }
+    }
+}
+class Patient {
+    private String name;
+    private int age;
+    private String diagnosis;
+    private String doctor;
+    private List<String> prescribedMedicines;
+
+    public Patient(String name, int age, String diagnosis, String doctor, List<String> prescribedMedicines) {
+        this.name = name;
+        this.age = age;
+        this.diagnosis = diagnosis;
+        this.doctor = doctor;
+        this.prescribedMedicines = prescribedMedicines;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getDiagnosis() {
+        return diagnosis;
+    }
+
+    public String getDoctor() {
+        return doctor;
+    }
+
+    public List<String> getPrescribedMedicines() {
+        return prescribedMedicines;
+    }
+}
+
+Output:
+
+1. Add a patient
+2. View patient records
+3. Exit
+Enter your choice: 1
+Enter patient name: Jayalakshmi
+Enter patient age: 67
+Enter patient diagnosis: Diabetic
+Enter treating doctor's name: Dr. Nayak
+Enter prescribed medicines (enter 'done' to finish): 
+Insulin
+done
+Patient record added successfully!
+
+1. Add a patient
+2. View patient records
+3. Exit
+Enter your choice: 2
+Patient Records:
+Name: Jayalakshmi
+Age: 67Diagnosis: DiabeticDoctor: Nayak
+Prescribed Medicines: [Insulin]
+
+1. Add a patient
+2. View patient records
+3. Exit
+Enter your choice: 3
+Exiting the program...
